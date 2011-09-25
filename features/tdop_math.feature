@@ -6,7 +6,7 @@ Feature: Algebraic Equation Parser
     Given I have loaded the tdop_math
 
   Scenario Outline: Run some calculations
-    When I ask the tdop_math for the answer to "<input>"
+    When I ask the tdop_math parser for the answer to "<input>"
     Then I should see string <result>
 
 
@@ -38,7 +38,7 @@ Feature: Algebraic Equation Parser
 
 
   Scenario Outline: Evaluated calcs
-    When I evaluate the tdop_math answer to "<input>"
+    When I evaluate the tdop_math parser answer to "<input>"
     Then I should see "<result>"
 
     Examples:
@@ -65,19 +65,15 @@ Feature: Algebraic Equation Parser
       | cos(2pi)                |                          1 |
 
   Scenario: Leading whitespace
-    When I ask the algebraic equation parser for the answer to "  2+2"
+    When I ask the tdop_math parser for the answer to "  2+2"
     Then I should see string "2 + 2"
 
   Scenario: Trailing whitespace
-    When I ask the algebraic equation parser for the answer to "2+2  "
+    When I ask the tdop_math parser for the answer to "2+2  "
     Then I should see string "2 + 2"
 
-  #Scenario: Odd whitespace characters
-    #When I ask the algebraic equation parser for the answer to " \t \n 2 \r\n + \t - \r 2 \n"
-    #Then I should see "0"
-
   Scenario Outline: Syntax errors
-    When I ask the algebraic equation parser for the answer to "<input>"
+    When I ask the tdop_math parser for the answer to "<input>"
     Then I should get the error "<message>"
 
     Examples:

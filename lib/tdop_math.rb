@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'smithereen'
 
-module TdopMath
+module TDOPMath
   class EquationParserLexer < Smithereen::Lexer
 
     def initialize(s, options)
@@ -176,7 +176,7 @@ module TdopMath
 
   end
 
-  class TDOPMath < Smithereen::Parser
+  class Parser < Smithereen::Parser
     def initialize(s, options = {})
       super(EquationParserGrammar.new(options), EquationParserLexer.new(s, options))
     end
